@@ -1,4 +1,3 @@
-from google.generativeai.types import ContentType
 import time
 import json
 import pandas as pd
