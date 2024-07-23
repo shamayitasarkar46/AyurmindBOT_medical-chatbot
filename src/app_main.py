@@ -59,7 +59,7 @@ def load_data(file_path):
     return questions, answers
 
 # Example usage
-file_path = r'data/ayurvedicQnA.csv'                # Replace data path with your file path
+file_path = r'https://github.com/shamayitasarkar46/AyurmindBOT_medical-chatbot/blob/main/data/ayurvedic_QnA.csv'                # Replace data path with your file path
 questions, answers = load_data(file_path)
 
 
