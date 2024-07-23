@@ -1,4 +1,3 @@
-from google.generativeai.types import ContentType
 import time
 import json
 import pandas as pd
@@ -38,7 +37,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # ]
 
 
-import pandas as pd
+
 
 def load_data(file_path):
     data = pd.read_csv(file_path)
@@ -60,7 +59,7 @@ def load_data(file_path):
     return questions, answers
 
 # Example usage
-file_path = r'C:\Users\shama\Desktop\Javascript\health_chatbot\ayurvedic_QnA.csv'                # Replace data path with your file path
+file_path = r'data/ayurvedicQnA.csv'                # Replace data path with your file path
 questions, answers = load_data(file_path)
 
 
