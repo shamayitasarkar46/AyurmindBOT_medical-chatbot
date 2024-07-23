@@ -40,7 +40,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 def load_data(file_path):
     try:
-        data = pd.read_csv(file_path, error_bad_lines=False, warn_bad_lines=True)
+        data = pd.read_csv(file_path, on_bad_lines='skip')
         questions = []
         answers = []
 
