@@ -75,12 +75,12 @@ except Exception as e:
 # Function to get response from Gemini Pro using genai
 def get_gemini_response(query):
     try:
-        str = ""
+       
         # Check if response contains an answer
         if query in questions:
             index = questions.index(query)
             return answers[index]
-        if str in query:
+        if "" in query:
             # Simulated external API call placeholder
             return "Please enter valid prompt."
             
@@ -100,26 +100,29 @@ def main():
             st.session_state.conversation = []
 
 
-        # Greeting responses
-    greetings = ["hi", "hello", "hey"]
-    greeting_responses = ["Hello! How can I help you?", "Hi there! How can I help you?", "Hey! How can I help you?"]
+# Greeting responses
+    greetings_identity = ["hi", "hello", "hey", "What is your name?", "Who are you?"]
+    greeting_responses = [ "Hi there! How can I help you?",
+                           "Hello! How can I help you?",
+                             "Hey! How can I help you?",
+                                "Hello! My name is  Ayurmind Bot, here to help you understand how Ayurveda can assist in managing and treating various health conditions. I will try to predict your diseases and their Ayurvedic remedies based on your symptoms.  Thank you for chosing Ayurmind BOT.",
+                                    "Hello! My name is  Ayurmind Bot, here to help you understand how Ayurveda can assist in managing and treating various health conditions. I will try to predict your diseases and their Ayurvedic remedies based on your symptoms.  Thank you for chosing Ayurmind BOT."]
 
-    identity = ["What is your name?", "Who are you?"]
-    identity_responses = ["Hello! My name is  Ayurmind Bot, here to help you understand how Ayurveda can assist in managing and treating various health conditions. I will try to predict your diseases and their Ayurvedic remedies based on your symptoms.  Thank you for chosing Ayurmind BOT.", "Hello! My name is Ayurmind Bot, here to help you understand how Ayurveda can assist in managing and treating various health conditions. I will try to predict your diseases and their Ayurvedic remedies based on your symptoms.  Thank you for chosing Ayurmind BOT."]
+    # identity = ["What is your name?", "Who are you?"]
+    # identity_responses = []
 
-        # User input
+    # User input
     user_input = st.text_input("You: ", "", key="user_input")
 
     if st.button("Send"):
             try:
                 # Determine bot response
                 user_input_lower = user_input.lower()
-                if user_input_lower in greetings:
-                    bot_response = greeting_responses[greetings.index(user_input_lower)]
-                    
-                elif user_input_lower in identity:
-                    bot_response = identity_responses[0]
+                if user_input_lower in greetings_identity:
+                    bot_response = greeting_responses[greetings_identity.index(user_input_lower)]
+                   
                 
+
                 
                 else:
                     
