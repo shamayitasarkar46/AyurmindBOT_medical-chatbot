@@ -39,32 +39,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 def load_data(file_path):
-    try:
-        data = pd.read_csv(file_path, on_bad_lines='skip')
-        questions = []
-        answers = []
+    data = pd.read_csv(file_path)
+    questions = []
+    answers = []
 
-        for index, row in data.iterrows():
-            disease = row['Disease']
-            remedies = row['Remedies']
-            symptoms = row['Symptoms'].split(',')  # Split symptoms by comma
+    for index, row in data.iterrows():
+        disease = row['Disease']
+        remedies = row['Remedies']
+        symptoms = row['Symptoms'].split(',')  # Split symptoms by comma
 
-            for symptom in symptoms:
-                symptom = symptom.strip()  # Remove any leading/trailing whitespace
-                question = symptom
-                answer = f"Based on the problem you are facing, you have {disease}.\n The Remedies to cure the disease are as follows: {remedies}.\n   {row['How to Apply Remedies']}"
-                questions.append(question)
-                answers.append(answer)
-        return questions, answers
-    except FileNotFoundError:
-        print(f"File not found: {file_path}")
-        return [], []
-    except pd.errors.ParserError as e:
-        print(f"Error parsing CSV: {e}")
-        return [], []
+        for symptom in symptoms:
+            symptom = symptom.strip()  # Remove any leading/trailing whitespace
+            question = symptom
+            answer = f"Based on the problem you are facing, you have {disease}.\n The Remedies to cure the disease are as follows: {remedies}.\n   {row['How to Apply Remedies']}"
+            questions.append(question)
+            answers.append(answer)
+
+    return questions, answers
 
 # Example usage
-file_path = 'https://raw.githubusercontent.com/shamayitasarkar46/AyurmindBOT_medical-chatbot/main/data/ayurvedicQnA.csv'                # Replace data path with your file path
+file_path = "data/ayurvedic_QnA.csv"                # Replace data path with your file path
 questions, answers = load_data(file_path)
 
 
